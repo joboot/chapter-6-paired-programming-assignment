@@ -24,6 +24,8 @@ def main():
     Any outputs from the student maintenance functions
     :return:
     """
+    valid_courses = ("history", "math", "science", "english", "physical education", "government")
+    valid_sports = ("football", "track", "volleyball", "golf", "wrestling", "basketball")
     students = []
     next_student_id = 0
 
@@ -54,14 +56,54 @@ def main():
             student_maintenance.delete_student(students)
 
         elif menu_input == 5:
-            print("Course menu")
-            utils.display_line()
-            display_course_menu()
+            while True:
+                print("Course menu")
+                utils.display_line()
+                display_course_menu()
+
+                course_menu_input = utils.get_range('Please enter a valid menu # (0-3): ', -1, 3, 'int')
+                print()
+
+                if course_menu_input == 1:
+                    print("Available courses")
+                    utils.display_line()
+
+                elif course_menu_input == 2:
+                    print("Enroll a student in a course")
+                    utils.display_line()
+
+                elif course_menu_input == 3:
+                    print("Remove a student from a course")
+                    utils.display_line()
+
+                elif course_menu_input == 0:
+                    print("Exiting menu...\n")
+                    break
 
         elif menu_input == 6:
-            print("Sport menu")
-            utils.display_line()
-            display_sport_menu()
+            while True:
+                print("Sport menu")
+                utils.display_line()
+                display_sport_menu()
+
+                sport_menu_input = utils.get_range('Please enter a valid menu # (0-3): ', -1, 3, 'int')
+                print()
+
+                if sport_menu_input == 1:
+                    print("Available sports")
+                    utils.display_line()
+
+                elif sport_menu_input == 2:
+                    print("Add a student in a sport")
+                    utils.display_line()
+
+                elif sport_menu_input == 3:
+                    print("Remove a student from a sport")
+                    utils.display_line()
+
+                elif sport_menu_input == 0:
+                    print("Exiting menu...\n")
+                    break
 
         elif menu_input == 0:
             print("Exiting program...\n")
@@ -94,7 +136,7 @@ def display_course_menu():
     print('1 - List available courses')
     print('2 - Enroll a student in a course')
     print("3 - Delete a student's course")
-    print('0 - Exit program')
+    print('0 - Exit')
 
 
 def display_sport_menu():
@@ -104,8 +146,8 @@ def display_sport_menu():
     """
     print('1 - List available sports')
     print('2 - Add a student in a sport')
-    print("3 - Delete a student's sport")
-    print('0 - Exit program')
+    print("3 - Remove a student from a sport")
+    print('0 - Exit')
 
 
 # runs this specific module's main
